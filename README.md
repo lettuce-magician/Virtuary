@@ -19,4 +19,4 @@ Pages
 Actual Ficharies
 Plugin Support
 
-## Code is licensed under MIT License, Icons are licensed under (CC BY-NC)[https://creativecommons.org/licenses/by-nc/4.0/legalcode]
+## Code is licensed under MIT License, Icons are licensed under [CC BY-NC](https://creativecommons.org/licenses/by-nc/4.0/legalcode)
