@@ -1,8 +1,16 @@
+local embed = require 'embed'.zip
+local ui = require 'ui'
 local ini = {}
 
 ini.parseFile = function(filename)
   filename = filename or ''
-  local file = sys.File(filename):open('read')
+  local file = sys.File(filename)
+  if not file.exists then
+    file = embed:extract('config.ini'):open()
+  else
+    file = file:open()
+  end
+  
   local ans,u,k,v,temp = {}
   if not file.exists then return ans end
   for line in file.lines do
@@ -20,7 +28,13 @@ ini.parseFile = function(filename)
 end
 
 ini.saveFile = function (fileName, data)
-	local file = sys.File(fileName):open("write")
+	local file = sys.File(fileName)
+  if not file.exists then
+    file = embed:extract('config.ini'):open('write')
+  else
+    file = file:open("write")
+  end
+  
 	local contents = '';
 	for section, param in pairs(data) do
 		contents = contents .. ('[%s]\n'):format(section);

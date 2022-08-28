@@ -1,5 +1,4 @@
 local ui = require "ui"
-local crypto = require "crypto"
 local ini = require "lib.ini"
 
 local config = ini.parseFile('./config.ini')

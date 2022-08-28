@@ -18,16 +18,15 @@ FontColor.text = 'Font Color: '..config.Window.FontColor
 
 ui.Button(win, "Edit Font", 150, 25).onClick = function(self)
   local font, size, style, color = ui.fontdialog()
-  if font and size and color then
-    config.Window.Font = font
-    config.Window.FontSize = size
-    config.Window.FontColor = color
-    ini.saveFile("./config.ini", config)
-    Font.text = 'Font: '..config.Window.Font
-    FontSize.text = 'Font Size: '..config.Window.FontSize
-    FontColor.text = 'Font Color: '..config.Window.FontColor
-    lwin.unload('font')
-  end
+  font = (font~='' and font~=nil and font) or nil
+  config.Window.Font = font or config.Window.Font
+  config.Window.FontSize = size or config.Window.FontSize
+  config.Window.FontColor = color or config.Window.FontColor
+  ini.saveFile("./config.ini", config)
+  Font.text = 'Font: '..config.Window.Font
+  FontSize.text = 'Font Size: '..config.Window.FontSize
+  FontColor.text = 'Font Color: '..config.Window.FontColor
+  lwin.unload('font')
 end
 
 return win
